@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: avicenna-oab-review-center
+    runtime: static
+    buildCommand: ""
+    staticPublishPath: .

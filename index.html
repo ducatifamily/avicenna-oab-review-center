@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#13354e">
+  <title>Occupational Advisory Board Review Center | Avicenna</title>
+  <meta name="description" content="Illustrative Occupational Advisory Board Review Center for Avicenna Allied Health Institute.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#overview" aria-label="Avicenna Occupational Advisory Board Review Center home">
+      <img src="assets/avicenna-logo.png" onerror="this.onerror=null;this.src='assets/logo-preview.svg'" alt="Avicenna Allied Health Institute">
+      <div class="brand-label">OCCUPATIONAL ADVISORY BOARD <span>REVIEW CENTER</span></div>
+    </a>
+    <div class="sidebar-program">
+      <label for="programSelect">Program committee</label>
+      <select id="programSelect"></select>
+      <label for="campusSelect">Campus</label>
+      <select id="campusSelect"><option value="Houston — Main Campus">Houston — Main Campus</option></select>
+    </div>
+    <div class="nav-heading">WORKSPACE</div>
+    <nav id="navigation" aria-label="Main navigation">
+      <button class="nav active" data-view="overview"><span>▦</span> Overview</button>
+      <button class="nav" data-view="membership"><span>♙</span> Board Membership</button>
+      <button class="nav" data-view="meetings"><span>▤</span> Meeting Workspace</button>
+      <button class="nav" data-view="program"><span>▥</span> Program Review</button>
+      <button class="nav" data-view="outcomes"><span>◫</span> Outcomes</button>
+      <button class="nav" data-view="tracker"><span>↗</span> Recommendation Tracker</button>
+      <button class="nav" data-view="evidence"><span>▣</span> Evidence Library</button>
+    </nav>
+    <div class="side-bottom"><div class="tiny-status"><span class="dot"></span> Leadership concept preview</div><small>Illustrative information only. No confidential records or student data.</small></div>
+  </aside>
+  <div class="main-wrap">
+    <header class="topbar">
+      <div class="top-left"><button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">☰</button><div><div class="eyebrow">AVICENNA ALLIED HEALTH INSTITUTE / QUALITY & PROGRAM IMPROVEMENT</div><h1 id="pageTitle">Occupational Advisory Board Review Center</h1></div></div>
+      <div class="top-actions"><span class="top-label">LEADERSHIP DEMO</span><button class="btn btn-outline" id="resetDemo">Reset demo</button><button class="btn btn-navy" id="printBrief">Print brief</button></div>
+    </header>
+    <div class="demo-banner"><span class="banner-pill">ILLUSTRATIVE DEMO</span> All names, meetings, metrics, decisions, and documents shown below are sample content. This is not an official advisory-board record.</div>
+    <div class="workspace"><main id="content" tabindex="-1"></main><aside id="insights" class="insights" aria-label="Meeting and evidence panel"></aside></div>
+    <footer class="footer">Avicenna Allied Health Institute · Occupational Advisory Board Review Center · Concept demonstration · <a href="https://avicennaallied.org/" target="_blank" rel="noopener noreferrer">Official website ↗</a></footer>
+  </div>
+</div>
+<div id="modalRoot"></div>
+<script src="data/demo.js"></script><script src="app.js"></script>
+</body>
+</html>
