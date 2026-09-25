@@ -1,5 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,531 +9,642 @@
 <title>Avicenna Occupational Advisory Board Review Center</title>
 
 <style>
+
 :root{
-  --navy:#20265a;
-  --navy-dark:#151b48;
-  --teal:#087b80;
-  --teal-light:#eaf6f5;
-  --orange:#b96533;
-  --orange-dark:#99511d;
-  --red:#d74b50;
-  --bg:#f5f7fa;
-  --white:#ffffff;
-  --ink:#26364b;
-  --muted:#6f7e8e;
-  --line:#e2e7ec;
-  --green:#187752;
-  --shadow:0 8px 24px rgba(28,42,70,.08);
+--navy:#20265a;
+--navy-dark:#151b48;
+--teal:#087b80;
+--orange:#b96533;
+--red:#d74b50;
+--green:#187752;
+--bg:#f5f7fa;
+--white:#ffffff;
+--ink:#26364b;
+--muted:#6f7e8e;
+--line:#e2e7ec;
+--shadow:0 8px 24px rgba(28,42,70,.08);
 }
 
-*{box-sizing:border-box}
+*{
+box-sizing:border-box;
+}
 
 body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--bg);
-  color:var(--ink);
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:var(--bg);
+color:var(--ink);
 }
 
-button,select,input{
-  font:inherit;
+button,select,input,textarea{
+font:inherit;
+}
+
+button{
+cursor:pointer;
 }
 
 .app{
-  display:grid;
-  grid-template-columns:255px 1fr;
-  min-height:100vh;
+display:grid;
+grid-template-columns:255px minmax(0,1fr);
+min-height:100vh;
 }
 
 /* SIDEBAR */
 
 .sidebar{
-  background:linear-gradient(180deg,var(--navy-dark),var(--navy));
-  color:white;
-  padding:20px 16px;
-  min-height:100vh;
-  position:sticky;
-  top:0;
+background:linear-gradient(180deg,var(--navy-dark),var(--navy));
+color:white;
+padding:20px 16px;
+min-height:100vh;
 }
 
 .logo-box{
-  background:white;
-  border-radius:14px;
-  padding:14px;
-  text-align:center;
-  margin-bottom:20px;
+background:white;
+border-radius:14px;
+padding:14px;
+text-align:center;
+margin-bottom:20px;
 }
 
 .logo-box img{
-  max-width:145px;
-  width:100%;
-  max-height:135px;
-  object-fit:contain;
+max-width:145px;
+width:100%;
+max-height:135px;
+object-fit:contain;
 }
 
 .logo-fallback{
-  color:var(--navy);
-  font-weight:800;
-  font-size:18px;
+color:var(--navy);
+font-weight:800;
+font-size:20px;
 }
 
 .logo-box small{
-  display:block;
-  margin-top:5px;
-  color:var(--navy);
-  font-size:9px;
-  font-weight:bold;
-  letter-spacing:.1em;
+display:block;
+margin-top:5px;
+color:var(--navy);
+font-size:9px;
+font-weight:bold;
+letter-spacing:.1em;
 }
 
 .sidebar label{
-  display:block;
-  font-size:10px;
-  text-transform:uppercase;
-  color:#b8c6e4;
-  letter-spacing:.1em;
-  margin-bottom:6px;
+display:block;
+font-size:10px;
+text-transform:uppercase;
+color:#b8c6e4;
+letter-spacing:.1em;
+margin-bottom:6px;
 }
 
 .sidebar select{
-  width:100%;
-  background:#394777;
-  color:white;
-  border:1px solid #586693;
-  border-radius:8px;
-  padding:10px;
-  margin-bottom:20px;
+width:100%;
+background:#394777;
+color:white;
+border:1px solid #586693;
+border-radius:8px;
+padding:10px;
+margin-bottom:20px;
 }
 
 .nav-title{
-  color:#9cacd0;
-  font-size:10px;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  margin:10px 8px 8px;
+color:#9cacd0;
+font-size:10px;
+letter-spacing:.1em;
+text-transform:uppercase;
+margin:10px 8px 8px;
 }
 
 .nav button{
-  display:block;
-  width:100%;
-  border:0;
-  background:transparent;
-  color:#e4e8f6;
-  text-align:left;
-  border-radius:8px;
-  padding:10px 11px;
-  margin:3px 0;
-  cursor:pointer;
+display:block;
+width:100%;
+border:0;
+background:transparent;
+color:#e4e8f6;
+text-align:left;
+border-radius:8px;
+padding:11px;
+margin:3px 0;
+cursor:pointer;
 }
 
 .nav button:hover,
 .nav button.active{
-  background:#465481;
-  color:white;
+background:#465481;
+color:white;
 }
 
 .nav button.active{
-  box-shadow:inset 3px 0 0 var(--orange);
+box-shadow:inset 3px 0 0 var(--orange);
 }
 
 .sidebar-note{
-  margin-top:24px;
-  padding:13px 8px;
-  border-top:1px solid #4c5981;
-  color:#abb8d4;
-  font-size:10px;
-  line-height:1.5;
+margin-top:24px;
+padding:13px 8px;
+border-top:1px solid #4c5981;
+color:#abb8d4;
+font-size:10px;
+line-height:1.5;
 }
 
 /* MAIN */
 
 .main{
-  min-width:0;
+min-width:0;
 }
 
 .topbar{
-  background:white;
-  border-bottom:1px solid var(--line);
-  padding:20px 28px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+background:white;
+border-bottom:1px solid var(--line);
+padding:20px 28px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
 }
 
 .overline{
-  color:var(--orange-dark);
-  font-size:10px;
-  font-weight:bold;
-  letter-spacing:.13em;
+color:#99511d;
+font-size:10px;
+font-weight:bold;
+letter-spacing:.13em;
 }
 
 .topbar h1{
-  margin:5px 0 0;
-  font-size:22px;
+margin:5px 0 0;
+font-size:22px;
 }
 
 .demo-tag{
-  background:#fff3e9;
-  color:var(--orange-dark);
-  border-radius:30px;
-  padding:7px 11px;
-  font-size:10px;
-  font-weight:bold;
+background:#fff3e9;
+color:#99511d;
+border-radius:30px;
+padding:7px 11px;
+font-size:10px;
+font-weight:bold;
+white-space:nowrap;
 }
 
 .demo-banner{
-  padding:10px 28px;
-  background:#fff8f1;
-  border-bottom:1px solid #f1dfce;
-  color:#7b5435;
-  font-size:12px;
+padding:10px 28px;
+background:#fff8f1;
+border-bottom:1px solid #f1dfce;
+color:#7b5435;
+font-size:12px;
 }
 
 .content{
-  padding:25px 28px 50px;
+padding:25px 28px 50px;
+max-width:1600px;
+margin:auto;
 }
 
 .page-head{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  align-items:flex-end;
-  margin-bottom:18px;
+display:flex;
+justify-content:space-between;
+gap:20px;
+align-items:flex-end;
+margin-bottom:18px;
 }
 
 .page-head h2{
-  margin:0 0 5px;
-  font-size:23px;
+margin:0 0 5px;
+font-size:23px;
 }
 
 .page-head p{
-  margin:0;
-  color:var(--muted);
-  font-size:12px;
+margin:0;
+color:var(--muted);
+font-size:12px;
+line-height:1.5;
 }
 
 .context{
-  display:flex;
-  gap:9px;
-  flex-wrap:wrap;
-  margin-bottom:16px;
+display:flex;
+gap:9px;
+flex-wrap:wrap;
+margin-bottom:16px;
 }
 
 .context span{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:8px;
-  padding:8px 10px;
-  font-size:11px;
+background:white;
+border:1px solid var(--line);
+border-radius:8px;
+padding:8px 10px;
+font-size:11px;
 }
 
 .grid{
-  display:grid;
-  gap:14px;
+display:grid;
+gap:14px;
 }
 
 .kpis{
-  grid-template-columns:repeat(4,1fr);
+grid-template-columns:repeat(4,minmax(0,1fr));
+}
+
+.two-col{
+grid-template-columns:repeat(2,minmax(0,1fr));
 }
 
 .card{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:17px;
-  box-shadow:var(--shadow);
-}
-
-.kpi small{
-  color:var(--muted);
-  text-transform:uppercase;
-  font-size:9px;
-  font-weight:bold;
-  letter-spacing:.08em;
-}
-
-.kpi strong{
-  display:block;
-  margin:9px 0 2px;
-  font-size:29px;
-  color:var(--navy);
-}
-
-.kpi p{
-  font-size:11px;
-  margin:0;
-  color:var(--muted);
-}
-
-.dashboard{
-  display:grid;
-  grid-template-columns:minmax(0,2.5fr) minmax(260px,.85fr);
-  gap:14px;
-  margin-top:15px;
+background:white;
+border:1px solid var(--line);
+border-radius:14px;
+padding:17px;
+box-shadow:var(--shadow);
 }
 
 .card h3{
-  margin:0 0 5px;
-  font-size:15px;
+margin:0 0 6px;
+font-size:15px;
 }
 
 .card-sub{
-  color:var(--muted);
-  font-size:11px;
-  margin-bottom:13px;
+color:var(--muted);
+font-size:11px;
+margin-bottom:13px;
+line-height:1.5;
+}
+
+.kpi small{
+color:var(--muted);
+text-transform:uppercase;
+font-size:10px;
+font-weight:bold;
+}
+
+.kpi strong{
+display:block;
+margin:9px 0 3px;
+font-size:29px;
+color:var(--navy);
+}
+
+.kpi p{
+font-size:11px;
+margin:0;
+color:var(--muted);
+}
+
+.dashboard{
+display:grid;
+grid-template-columns:minmax(0,2.5fr) minmax(260px,.85fr);
+gap:14px;
+margin-top:15px;
 }
 
 /* TABLE */
 
 .table-wrap{
-  overflow-x:auto;
+overflow-x:auto;
 }
 
 table{
-  width:100%;
-  border-collapse:collapse;
-  font-size:11px;
+width:100%;
+border-collapse:collapse;
+font-size:11px;
 }
 
 th{
-  background:#f8fafc;
-  color:#708092;
-  text-align:left;
-  text-transform:uppercase;
-  font-size:9px;
-  letter-spacing:.05em;
-  padding:10px;
+background:#f8fafc;
+color:#708092;
+text-align:left;
+text-transform:uppercase;
+font-size:9px;
+letter-spacing:.05em;
+padding:10px;
 }
 
 td{
-  border-top:1px solid #edf0f3;
-  padding:11px 10px;
-  vertical-align:top;
-  line-height:1.4;
+border-top:1px solid #edf0f3;
+padding:11px 10px;
+vertical-align:top;
+line-height:1.5;
 }
 
 .rec-link{
-  border:0;
-  background:transparent;
-  color:#17688c;
-  font-weight:bold;
-  text-align:left;
-  padding:0;
-  cursor:pointer;
+border:0;
+background:transparent;
+color:#17688c;
+font-weight:bold;
+text-align:left;
+padding:0;
+cursor:pointer;
 }
 
 .rec-link:hover{
-  text-decoration:underline;
+text-decoration:underline;
 }
 
 .status{
-  display:inline-block;
-  border-radius:20px;
-  padding:5px 7px;
-  font-size:9px;
-  font-weight:bold;
+display:inline-block;
+border-radius:20px;
+padding:5px 7px;
+font-size:9px;
+font-weight:bold;
+white-space:nowrap;
 }
 
-.status.progress{background:#e5f2f9;color:#176b9b}
-.status.awaiting{background:#fff0df;color:#9d5b1f}
-.status.completed{background:#e6f5ed;color:#187752}
-.status.planned{background:#eef0fb;color:#454ba5}
+.status.progress{
+background:#e5f2f9;
+color:#176b9b;
+}
 
-/* SIDE INFO */
+.status.awaiting{
+background:#fff0df;
+color:#9d5b1f;
+}
+
+.status.completed{
+background:#e6f5ed;
+color:#187752;
+}
+
+.status.planned{
+background:#eef0fb;
+color:#454ba5;
+}
+
+/* SIDE PANEL */
 
 .side-block{
-  border-bottom:1px solid var(--line);
-  padding-bottom:13px;
-  margin-bottom:13px;
+border-bottom:1px solid var(--line);
+padding-bottom:13px;
+margin-bottom:13px;
 }
 
 .side-block:last-child{
-  border-bottom:0;
+border-bottom:0;
 }
 
 .side-block small{
-  color:var(--muted);
+color:var(--muted);
 }
 
 .side-block strong{
-  display:block;
-  margin:5px 0;
+display:block;
+margin:5px 0;
 }
 
 .missing{
-  color:#b7523d;
-  font-size:11px;
-  line-height:1.7;
+color:#b7523d;
+font-size:11px;
+line-height:1.8;
 }
 
-/* GENERIC CONTENT */
-
-.two-col{
-  grid-template-columns:repeat(2,1fr);
-}
-
-.three-col{
-  grid-template-columns:repeat(3,1fr);
-}
+/* OTHER CONTENT */
 
 .member{
-  display:flex;
-  gap:12px;
-  align-items:flex-start;
+display:flex;
+gap:12px;
+align-items:flex-start;
 }
 
 .avatar{
-  width:38px;
-  height:38px;
-  border-radius:50%;
-  background:var(--teal-light);
-  color:var(--teal);
-  display:grid;
-  place-items:center;
-  font-weight:bold;
+width:38px;
+height:38px;
+border-radius:50%;
+background:#eaf6f5;
+color:var(--teal);
+display:grid;
+place-items:center;
+font-weight:bold;
+flex-shrink:0;
 }
 
 .member strong{
-  display:block;
+display:block;
 }
 
 .member p{
-  color:var(--muted);
-  font-size:11px;
-  margin:4px 0;
+color:var(--muted);
+font-size:11px;
+margin:4px 0;
 }
 
 .list-row{
-  padding:12px 0;
-  border-bottom:1px solid var(--line);
+padding:12px 0;
+border-bottom:1px solid var(--line);
 }
 
 .list-row:last-child{
-  border-bottom:0;
+border-bottom:0;
 }
 
 .list-row strong{
-  display:block;
-  margin-bottom:4px;
+display:block;
+margin-bottom:4px;
 }
 
 .list-row small{
-  color:var(--muted);
+color:var(--muted);
 }
 
 .metric{
-  font-size:28px;
-  color:var(--navy);
-  font-weight:bold;
-  margin:10px 0;
+font-size:28px;
+color:var(--navy);
+font-weight:bold;
+margin:10px 0;
 }
 
 .bar{
-  height:7px;
-  background:#edf0f3;
-  border-radius:20px;
-  overflow:hidden;
+height:7px;
+background:#edf0f3;
+border-radius:20px;
+overflow:hidden;
 }
 
 .bar span{
-  display:block;
-  height:100%;
-  background:var(--teal);
+display:block;
+height:100%;
+background:var(--teal);
 }
 
-/* TABLEAU */
+.btn{
+display:inline-block;
+padding:10px 15px;
+border-radius:8px;
+border:0;
+background:var(--navy);
+color:white;
+font-weight:bold;
+font-size:12px;
+text-decoration:none;
+cursor:pointer;
+}
 
-.tableau-card{
-  margin-top:18px;
+.btn:hover{
+background:#394777;
+}
+
+/* TABLEAU DASHBOARD PAGE */
+
+.tableau-page{
+width:100%;
+}
+
+.tableau-header{
+background:linear-gradient(120deg,var(--navy),#344683);
+border-radius:15px;
+padding:25px;
+color:white;
+margin-bottom:18px;
+}
+
+.tableau-header h2{
+margin:5px 0 8px;
+font-size:25px;
+}
+
+.tableau-header p{
+margin:0;
+color:#dce5f5;
+font-size:12px;
+line-height:1.6;
+}
+
+.tableau-container{
+background:white;
+border:1px solid var(--line);
+border-radius:14px;
+padding:18px;
+box-shadow:var(--shadow);
 }
 
 .tableau-frame{
-  min-height:850px;
-  overflow:auto;
+width:100%;
+height:850px;
+border:0;
+display:block;
+background:white;
 }
 
-.tableauPlaceholder{
-  width:100%;
+.tableau-note{
+margin-top:14px;
+padding:12px;
+background:#eef6f7;
+border-radius:9px;
+font-size:11px;
+color:#536b75;
+line-height:1.6;
 }
 
 /* MODAL */
 
 .modal-bg{
-  position:fixed;
-  inset:0;
-  background:rgba(10,20,40,.55);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  z-index:100;
+position:fixed;
+inset:0;
+background:rgba(10,20,40,.55);
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+z-index:100;
 }
 
 .modal{
-  background:white;
-  width:min(720px,100%);
-  max-height:90vh;
-  overflow:auto;
-  border-radius:16px;
-  padding:22px;
+background:white;
+width:min(720px,100%);
+max-height:90vh;
+overflow:auto;
+border-radius:16px;
+padding:22px;
 }
 
 .modal h2{
-  margin:6px 0 14px;
+margin:6px 0 14px;
 }
 
 .trail{
-  border-left:3px solid #dde6ea;
-  margin:20px 0 5px 6px;
+border-left:3px solid #dde6ea;
+margin:20px 0 5px 6px;
 }
 
 .trail-item{
-  padding:0 0 18px 19px;
-  position:relative;
+padding:0 0 18px 19px;
+position:relative;
 }
 
 .trail-item:before{
-  content:"";
-  position:absolute;
-  left:-7px;
-  top:3px;
-  width:11px;
-  height:11px;
-  border-radius:50%;
-  background:var(--teal);
+content:"";
+position:absolute;
+left:-7px;
+top:3px;
+width:11px;
+height:11px;
+border-radius:50%;
+background:var(--teal);
 }
 
 .trail-item strong{
-  display:block;
+display:block;
 }
 
 .trail-item p{
-  color:var(--muted);
-  margin:4px 0 0;
-  line-height:1.5;
-  font-size:12px;
+color:var(--muted);
+margin:4px 0 0;
+line-height:1.5;
+font-size:12px;
 }
 
 .close{
-  float:right;
-  border:0;
-  background:#f0f3f6;
-  border-radius:50%;
-  width:32px;
-  height:32px;
-  cursor:pointer;
+float:right;
+border:0;
+background:#f0f3f6;
+border-radius:50%;
+width:32px;
+height:32px;
+cursor:pointer;
 }
 
 @media(max-width:1000px){
-  .kpis{grid-template-columns:repeat(2,1fr)}
-  .dashboard{grid-template-columns:1fr}
+
+.kpis{
+grid-template-columns:repeat(2,1fr);
+}
+
+.dashboard{
+grid-template-columns:1fr;
+}
+
 }
 
 @media(max-width:760px){
-  .app{grid-template-columns:1fr}
-  .sidebar{position:relative;height:auto;min-height:auto}
-  .two-col,.three-col,.kpis{grid-template-columns:1fr}
+
+.app{
+grid-template-columns:1fr;
 }
+
+.sidebar{
+position:relative;
+height:auto;
+min-height:auto;
+}
+
+.two-col,.kpis{
+grid-template-columns:1fr;
+}
+
+.topbar{
+padding:16px;
+}
+
+.topbar h1{
+font-size:18px;
+}
+
+.content{
+padding:18px 14px;
+}
+
+.tableau-frame{
+height:750px;
+}
+
+}
+
 </style>
 </head>
 
@@ -539,956 +652,1289 @@ td{
 
 <div class="app">
 
+<!-- SIDEBAR -->
+
 <aside class="sidebar">
 
-  <div class="logo-box">
-    <img
-      src="assets/avicenna-logo.png"
-      alt="Avicenna Allied Health Institute"
-      onerror="this.style.display='none';document.getElementById('logoFallback').style.display='block';"
-    >
-    <div id="logoFallback" class="logo-fallback" style="display:none;">
-      AVICENNA
-    </div>
-    <small>Allied Health Institute</small>
-  </div>
+<div class="logo-box">
 
-  <label for="programSelect">Program</label>
-  <select id="programSelect">
-    <option value="MAC">Medical Assisting</option>
-    <option value="DENTAL">Dental Assisting</option>
-    <option value="MBC">Medical Billing & Coding</option>
-    <option value="BHT">Behavioral Health Technician</option>
-  </select>
+<img
+src="assets/avicenna-logo.png"
+alt="Avicenna Allied Health Institute"
+onerror="this.style.display='none';document.getElementById('logoFallback').style.display='block';"
+>
 
-  <div class="nav-title">Advisory Board Center</div>
+<div id="logoFallback" class="logo-fallback" style="display:none;">
+AVICENNA
+</div>
 
-  <div class="nav">
-    <button class="active" data-page="overview">⌂ Overview</button>
-    <button data-page="membership">👥 Board Membership</button>
-    <button data-page="meeting">🗓 Meeting Workspace</button>
-    <button data-page="review">✓ Program Review</button>
-    <button data-page="outcomes">▥ Outcomes</button>
-    <button data-page="recommendations">↻ Recommendation Tracker</button>
-    <button data-page="evidence">▤ Evidence Library</button>
-  </div>
+<small>Allied Health Institute</small>
 
-  <div class="sidebar-note">
-    <strong>Illustrative prototype</strong><br>
-    Sample records are included for leadership demonstration only.
-  </div>
+</div>
+
+<label for="programSelect">Program Committee</label>
+
+<select id="programSelect">
+<option value="MAC">Medical Assisting</option>
+<option value="DENTAL">Dental Assisting</option>
+<option value="MBC">Medical Billing & Coding</option>
+<option value="BHT">Behavioral Health Technician</option>
+</select>
+
+<div class="nav-title">Advisory Board Center</div>
+
+<nav class="nav">
+
+<button class="active" data-page="overview">
+⌂ Overview
+</button>
+
+<button data-page="membership">
+👥 Board Membership
+</button>
+
+<button data-page="meeting">
+▤ Meeting Workspace
+</button>
+
+<button data-page="review">
+✓ Program Review
+</button>
+
+<button data-page="outcomes">
+◫ Outcomes
+</button>
+
+<button data-page="dashboard">
+▥ AAHI Dashboard
+</button>
+
+<button data-page="recommendations">
+↗ Recommendation Tracker
+</button>
+
+<button data-page="evidence">
+▣ Evidence Library
+</button>
+
+</nav>
+
+<div class="sidebar-note">
+
+<strong>Illustrative Prototype</strong><br>
+
+Sample records are included for leadership demonstration only.
+
+</div>
 
 </aside>
 
+<!-- MAIN -->
+
 <main class="main">
 
-  <header class="topbar">
-    <div>
-      <div class="overline">AVICENNA ALLIED HEALTH INSTITUTE</div>
-      <h1>Occupational Advisory Board Review Center</h1>
-    </div>
-    <div class="demo-tag">ILLUSTRATIVE DEMO</div>
-  </header>
+<header class="topbar">
 
-  <div class="demo-banner">
-    Sample meetings, members, recommendations, outcomes, and actions are illustrative and are not official institutional records.
-  </div>
+<div>
 
-  <section class="content" id="content"></section>
+<div class="overline">
+AVICENNA ALLIED HEALTH INSTITUTE
+</div>
+
+<h1>
+Occupational Advisory Board Review Center
+</h1>
+
+</div>
+
+<div class="demo-tag">
+ILLUSTRATIVE DEMO
+</div>
+
+</header>
+
+<div class="demo-banner">
+
+Sample meetings, members, recommendations, outcomes, and actions are illustrative and are not official institutional records.
+
+</div>
+
+<section class="content" id="content"></section>
 
 </main>
+
 </div>
 
 <div id="modalMount"></div>
 
 <script>
 
-/* ------------------------------------------------
-   SAMPLE DATA
------------------------------------------------- */
+/* ==========================================
+   ILLUSTRATIVE PROGRAM DATA
+========================================== */
 
-const programs = {
+const programs={
 
 MAC:{
- name:"Medical Assisting",
- campus:"Austin / Hybrid",
- nextMeeting:"November 12, 2026",
- status:"Annual review in progress",
 
- members:[
-  ["Monica Reyes","Hill Country Family Medicine","Clinic Manager","2026–2028"],
-  ["Daniel Cho","Central Texas Cardiology","Lead Medical Assistant","2025–2027"],
-  ["Rachel Nguyen","Lone Star Diagnostics","Clinical Operations Supervisor","2026–2028"],
-  ["James Porter","Community Health Partners","Practice Administrator","2025–2027"]
- ],
+name:"Medical Assisting",
+campus:"Austin / Hybrid",
+nextMeeting:"November 12, 2026",
+status:"Annual review in progress",
 
- agenda:[
-  "Review prior advisory board recommendations",
-  "Review MAC curriculum and skills checklist",
-  "Discuss EKG and phlebotomy employer expectations",
-  "Review clinical equipment and simulation resources",
-  "Review certification preparation",
-  "Develop recommendations and assigned actions"
- ],
+members:[
+["Monica Reyes","Sample Family Medicine","Clinic Manager","2026–2028"],
+["Daniel Cho","Example Cardiology Group","Lead Medical Assistant","2025–2027"],
+["Rachel Nguyen","Sample Diagnostic Center","Clinical Operations Supervisor","2026–2028"],
+["James Porter","Community Health Practice","Practice Administrator","2025–2027"]
+],
 
- review:[
-  ["Curriculum","Review clinical skills sequencing and current employer expectations"],
-  ["Skills checklists","Review EKG, vital signs, injections, phlebotomy, and infection control competencies"],
-  ["Clinical experiences","Review externship preparedness and employer feedback"],
-  ["Equipment","Review EKG machines, phlebotomy supplies, PPE, and simulation equipment"],
-  ["Certification preparation","Review alignment with applicable certification preparation"],
-  ["Proposed changes","Prioritize changes based on advisor recommendations"]
- ],
+agenda:[
+"Review prior advisory board recommendations",
+"Review MAC curriculum and skills checklist",
+"Discuss EKG and phlebotomy employer expectations",
+"Review clinical equipment and simulation resources",
+"Review certification preparation",
+"Develop recommendations and assigned actions"
+],
 
- outcomes:[87,81,79,91],
+review:[
+["Curriculum","Review clinical skills sequencing and employer expectations"],
+["Skills Checklists","Review EKG, vital signs, injections, phlebotomy, and infection control competencies"],
+["Clinical Experiences","Review externship preparedness and employer feedback"],
+["Equipment","Review EKG machines, phlebotomy supplies, PPE, and simulation equipment"],
+["Certification Preparation","Review alignment with applicable certification preparation"],
+["Proposed Changes","Prioritize changes based on advisor recommendations"]
+],
 
- recommendations:[
-  {
-   id:"MAC-26-01",
-   text:"Add a second EKG competency check before externship.",
-   date:"2026-05-14",
-   owner:"MAC Program Director",
-   due:"2026-10-01",
-   status:"In progress",
-   decision:"AAHI agreed that students would benefit from an additional competency check before externship placement.",
-   action:"Add a second EKG skills validation to the clinical skills sequence.",
-   evidence:"Revised MAC skills checklist and updated course calendar."
-  },
-  {
-   id:"MAC-26-02",
-   text:"Increase practice with automated and manual blood pressure equipment.",
-   date:"2026-05-14",
-   owner:"Clinical Faculty Lead",
-   due:"2026-08-15",
-   status:"Completed",
-   decision:"AAHI accepted the recommendation.",
-   action:"Added both automated and manual blood pressure practice to lab rotation.",
-   evidence:"Updated lab rotation guide and equipment inventory."
-  },
-  {
-   id:"MAC-26-03",
-   text:"Review phlebotomy supply quantities before the next cohort.",
-   date:"2026-05-14",
-   owner:"Campus Operations",
-   due:"2026-11-01",
-   status:"Awaiting decision",
-   decision:"Under review.",
-   action:"Pending institutional decision.",
-   evidence:"No completion evidence yet."
-  }
- ]
+outcomes:[87,81,79,91],
+
+recommendations:[
+
+{
+id:"MAC-26-01",
+text:"Add a second EKG competency check before externship.",
+date:"2026-05-14",
+owner:"MAC Program Director",
+due:"2026-10-01",
+status:"In progress",
+decision:"AAHI agreed that students would benefit from an additional competency check before externship placement.",
+action:"Add a second EKG skills validation to the clinical skills sequence.",
+evidence:"Revised MAC skills checklist and updated course calendar."
+},
+
+{
+id:"MAC-26-02",
+text:"Increase practice with automated and manual blood pressure equipment.",
+date:"2026-05-14",
+owner:"Clinical Faculty Lead",
+due:"2026-08-15",
+status:"Completed",
+decision:"AAHI accepted the recommendation.",
+action:"Added both automated and manual blood pressure practice to lab rotation.",
+evidence:"Updated lab rotation guide and equipment inventory."
+},
+
+{
+id:"MAC-26-03",
+text:"Review phlebotomy supply quantities before the next cohort.",
+date:"2026-05-14",
+owner:"Campus Operations",
+due:"2026-11-01",
+status:"Awaiting decision",
+decision:"Under review.",
+action:"Pending institutional decision.",
+evidence:"No completion evidence yet."
+}
+
+]
+
 },
 
 DENTAL:{
- name:"Dental Assisting",
- campus:"Austin / Hybrid",
- nextMeeting:"December 3, 2026",
- status:"Materials in preparation",
 
- members:[
-  ["Angela Martinez","Austin Family Dentistry","Dental Office Manager","2026–2028"],
-  ["Kimberly Ross","Hill Country Dental","Registered Dental Assistant","2025–2027"],
-  ["Trevor Young","Lakeway Smiles","Practice Administrator","2026–2028"]
- ],
+name:"Dental Assisting",
+campus:"Austin / Hybrid",
+nextMeeting:"December 3, 2026",
+status:"Materials in preparation",
 
- agenda:[
-  "Review prior recommendations",
-  "Review dental assisting curriculum",
-  "Review infection control and sterilization competencies",
-  "Review radiography preparation",
-  "Review operatory equipment and supplies",
-  "Develop advisory recommendations"
- ],
+members:[
+["Angela Martinez","Example Family Dentistry","Dental Office Manager","2026–2028"],
+["Kimberly Ross","Sample Dental Practice","Dental Assistant","2025–2027"],
+["Trevor Young","Community Dental Group","Practice Administrator","2026–2028"]
+],
 
- review:[
-  ["Curriculum","Review chairside assisting and dental sciences curriculum"],
-  ["Skills checklists","Review sterilization, operatory setup, PPE, and instrument transfer competencies"],
-  ["Clinical experiences","Review clinical practice and externship preparation"],
-  ["Equipment","Review sterilization, radiography, and operatory equipment"],
-  ["Certification preparation","Review credential preparation expectations"],
-  ["Proposed changes","Document employer-prioritized changes"]
- ],
+agenda:[
+"Review prior recommendations",
+"Review dental assisting curriculum",
+"Review infection control and sterilization competencies",
+"Review radiography preparation",
+"Review operatory equipment and supplies",
+"Develop advisory recommendations"
+],
 
- outcomes:[84,78,82,89],
+review:[
+["Curriculum","Review chairside assisting and dental sciences curriculum"],
+["Skills Checklists","Review sterilization, operatory setup, PPE, and instrument transfer competencies"],
+["Clinical Experiences","Review clinical practice and externship preparation"],
+["Equipment","Review sterilization, radiography, and operatory equipment"],
+["Certification Preparation","Review credential preparation expectations"],
+["Proposed Changes","Document employer-prioritized changes"]
+],
 
- recommendations:[
-  {
-   id:"DEN-26-01",
-   text:"Increase instrument identification practice before chairside lab.",
-   date:"2026-04-22",
-   owner:"Dental Program Director",
-   due:"2026-09-15",
-   status:"Completed",
-   decision:"Recommendation adopted.",
-   action:"Instrument identification activities added earlier in the sequence.",
-   evidence:"Revised lesson plan and lab checklist."
-  },
-  {
-   id:"DEN-26-02",
-   text:"Review sterilization workflow against current employer practices.",
-   date:"2026-04-22",
-   owner:"Dental Faculty Lead",
-   due:"2026-11-15",
-   status:"In progress",
-   decision:"AAHI agreed to compare current training with employer workflows.",
-   action:"Faculty and advisory members will review the sterilization checklist.",
-   evidence:"Review meeting scheduled."
-  }
- ]
+outcomes:[84,78,82,89],
+
+recommendations:[
+
+{
+id:"DEN-26-01",
+text:"Increase instrument identification practice before chairside lab.",
+date:"2026-04-22",
+owner:"Dental Program Director",
+due:"2026-09-15",
+status:"Completed",
+decision:"Recommendation adopted.",
+action:"Instrument identification activities added earlier in the sequence.",
+evidence:"Revised lesson plan and lab checklist."
+},
+
+{
+id:"DEN-26-02",
+text:"Review sterilization workflow against current employer practices.",
+date:"2026-04-22",
+owner:"Dental Faculty Lead",
+due:"2026-11-15",
+status:"In progress",
+decision:"AAHI agreed to compare current training with employer workflows.",
+action:"Faculty and advisory members will review the sterilization checklist.",
+evidence:"Review meeting scheduled."
+}
+
+]
+
 },
 
 MBC:{
- name:"Medical Billing & Coding",
- campus:"Online",
- nextMeeting:"November 19, 2026",
- status:"Annual review scheduled",
 
- members:[
-  ["Sharon Lee","Texas Medical Billing Group","Revenue Cycle Manager","2026–2028"],
-  ["Marcus White","Central Health Network","Coding Supervisor","2025–2027"],
-  ["Priya Patel","Austin Specialty Clinics","Billing Operations Manager","2026–2028"]
- ],
+name:"Medical Billing & Coding",
+campus:"Online",
+nextMeeting:"November 19, 2026",
+status:"Annual review scheduled",
 
- agenda:[
-  "Review coding curriculum",
-  "Review ICD-10-CM and CPT practice",
-  "Discuss denial management skills",
-  "Review billing software exposure",
-  "Review certification preparation",
-  "Document recommendations"
- ],
+members:[
+["Sharon Lee","Example Billing Services","Revenue Cycle Manager","2026–2028"],
+["Marcus White","Sample Health Network","Coding Supervisor","2025–2027"],
+["Priya Patel","Community Specialty Clinics","Billing Operations Manager","2026–2028"]
+],
 
- review:[
-  ["Curriculum","Review coding, reimbursement, and revenue cycle curriculum"],
-  ["Skills checklists","Review documentation review and coding competencies"],
-  ["Clinical experiences","Review applied case practice and simulated workflow"],
-  ["Equipment","Review coding references and software resources"],
-  ["Certification preparation","Review certification readiness"],
-  ["Proposed changes","Document employer-prioritized changes"]
- ],
+agenda:[
+"Review coding curriculum",
+"Review ICD-10-CM and CPT practice",
+"Discuss denial management skills",
+"Review billing software exposure",
+"Review certification preparation",
+"Document recommendations"
+],
 
- outcomes:[90,83,76,88],
+review:[
+["Curriculum","Review coding, reimbursement, and revenue cycle curriculum"],
+["Skills Checklists","Review documentation review and coding competencies"],
+["Clinical Experiences","Review applied case practice and simulated workflow"],
+["Equipment","Review coding references and software resources"],
+["Certification Preparation","Review certification readiness"],
+["Proposed Changes","Document employer-prioritized changes"]
+],
 
- recommendations:[
-  {
-   id:"MBC-26-01",
-   text:"Add additional denial-management scenarios.",
-   date:"2026-06-10",
-   owner:"MBC Program Director",
-   due:"2026-10-30",
-   status:"In progress",
-   decision:"Recommendation adopted.",
-   action:"Develop additional denial and resubmission practice cases.",
-   evidence:"Draft simulation cases in development."
-  },
-  {
-   id:"MBC-26-02",
-   text:"Increase use of realistic provider documentation in coding practice.",
-   date:"2026-06-10",
-   owner:"Coding Faculty",
-   due:"2026-12-01",
-   status:"Planned",
-   decision:"Recommendation accepted for next curriculum revision.",
-   action:"Add de-identified sample documentation to coding exercises.",
-   evidence:"Planned curriculum revision."
-  }
- ]
+outcomes:[90,83,76,88],
+
+recommendations:[
+
+{
+id:"MBC-26-01",
+text:"Add additional denial-management scenarios.",
+date:"2026-06-10",
+owner:"MBC Program Director",
+due:"2026-10-30",
+status:"In progress",
+decision:"Recommendation adopted.",
+action:"Develop additional denial and resubmission practice cases.",
+evidence:"Draft simulation cases in development."
+},
+
+{
+id:"MBC-26-02",
+text:"Increase use of realistic provider documentation in coding practice.",
+date:"2026-06-10",
+owner:"Coding Faculty",
+due:"2026-12-01",
+status:"Planned",
+decision:"Recommendation accepted for next curriculum revision.",
+action:"Add fictional sample documentation to coding exercises.",
+evidence:"Planned curriculum revision."
+}
+
+]
+
 },
 
 BHT:{
- name:"Behavioral Health Technician",
- campus:"Online / Hybrid",
- nextMeeting:"December 10, 2026",
- status:"Board materials in development",
 
- members:[
-  ["Thomas Green","Community Behavioral Health Services","Program Supervisor","2026–2028"],
-  ["Leslie Carter","Central Texas Recovery Network","Clinical Operations Manager","2025–2027"],
-  ["Nina Brooks","Youth Behavioral Services","Behavioral Health Supervisor","2026–2028"]
- ],
+name:"Behavioral Health Technician",
+campus:"Online / Hybrid",
+nextMeeting:"December 10, 2026",
+status:"Board materials in development",
 
- agenda:[
-  "Review BHT curriculum",
-  "Review therapeutic communication skills",
-  "Discuss de-escalation and safety preparation",
-  "Review documentation competencies",
-  "Review employer feedback",
-  "Develop recommendations"
- ],
+members:[
+["Thomas Green","Example Behavioral Health Services","Program Supervisor","2026–2028"],
+["Leslie Carter","Sample Recovery Network","Clinical Operations Manager","2025–2027"],
+["Nina Brooks","Community Behavioral Services","Behavioral Health Supervisor","2026–2028"]
+],
 
- review:[
-  ["Curriculum","Review behavioral health foundations and applied skills"],
-  ["Skills checklists","Review communication, de-escalation, documentation, and safety competencies"],
-  ["Clinical experiences","Review applied practice preparation"],
-  ["Equipment","Review simulation and learning resources"],
-  ["Certification preparation","Review applicable employment and certification preparation"],
-  ["Proposed changes","Prioritize advisor recommendations"]
- ],
+agenda:[
+"Review BHT curriculum",
+"Review therapeutic communication skills",
+"Discuss de-escalation and safety preparation",
+"Review documentation competencies",
+"Review employer feedback",
+"Develop recommendations"
+],
 
- outcomes:[86,75,80,93],
+review:[
+["Curriculum","Review behavioral health foundations and applied skills"],
+["Skills Checklists","Review communication, de-escalation, documentation, and safety competencies"],
+["Clinical Experiences","Review applied practice preparation"],
+["Equipment","Review simulation and learning resources"],
+["Certification Preparation","Review applicable employment and certification preparation"],
+["Proposed Changes","Prioritize advisor recommendations"]
+],
 
- recommendations:[
-  {
-   id:"BHT-26-01",
-   text:"Add more de-escalation decision-making scenarios.",
-   date:"2026-05-28",
-   owner:"BHT Program Director",
-   due:"2026-10-15",
-   status:"In progress",
-   decision:"Recommendation adopted.",
-   action:"Develop branching de-escalation scenarios for online learners.",
-   evidence:"Scenario prototype under development."
-  },
-  {
-   id:"BHT-26-02",
-   text:"Strengthen objective documentation practice.",
-   date:"2026-05-28",
-   owner:"BHT Faculty Lead",
-   due:"2026-11-30",
-   status:"Planned",
-   decision:"Recommendation accepted.",
-   action:"Add documentation practice using behavioral observations.",
-   evidence:"Planned curriculum revision."
-  }
- ]
+outcomes:[86,75,80,93],
+
+recommendations:[
+
+{
+id:"BHT-26-01",
+text:"Add more de-escalation decision-making scenarios.",
+date:"2026-05-28",
+owner:"BHT Program Director",
+due:"2026-10-15",
+status:"In progress",
+decision:"Recommendation adopted.",
+action:"Develop branching de-escalation scenarios for online learners.",
+evidence:"Scenario prototype under development."
+},
+
+{
+id:"BHT-26-02",
+text:"Strengthen objective documentation practice.",
+date:"2026-05-28",
+owner:"BHT Faculty Lead",
+due:"2026-11-30",
+status:"Planned",
+decision:"Recommendation accepted.",
+action:"Add documentation practice using behavioral observations.",
+evidence:"Planned curriculum revision."
+}
+
+]
+
 }
 
 };
 
+
+/* ==========================================
+   STATE AND HELPERS
+========================================== */
+
 let currentProgram="MAC";
 let currentPage="overview";
 
-/* ------------------------------------------------
-   HELPERS
------------------------------------------------- */
+const tableauURL=
+"https://public.tableau.com/views/AAHIDashboard/CohortEnrollmentProgramMix?:showVizHome=no&:embed=yes";
+
+const tableauOpen=
+"https://public.tableau.com/views/AAHIDashboard/CohortEnrollmentProgramMix";
 
 function p(){
- return programs[currentProgram];
+return programs[currentProgram];
+}
+
+function escapeHTML(value){
+return String(value ?? "").replace(/[&<>"']/g,function(c){
+return {
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#39;"
+}[c];
+});
 }
 
 function statusClass(status){
- if(status==="Completed") return "completed";
- if(status==="In progress") return "progress";
- if(status==="Planned") return "planned";
- return "awaiting";
+
+if(status==="Completed")return "completed";
+if(status==="In progress")return "progress";
+if(status==="Planned")return "planned";
+
+return "awaiting";
+
 }
 
 function pageHeader(title,description){
- return `
- <div class="page-head">
-  <div>
-   <h2>${title}</h2>
-   <p>${description}</p>
-  </div>
- </div>`;
+
+return `
+<div class="page-head">
+
+<div>
+<h2>${escapeHTML(title)}</h2>
+<p>${escapeHTML(description)}</p>
+</div>
+
+</div>
+`;
+
 }
 
 function context(){
- return `
- <div class="context">
-  <span><strong>Program:</strong> ${p().name}</span>
-  <span><strong>Campus:</strong> ${p().campus}</span>
-  <span><strong>Next meeting:</strong> ${p().nextMeeting}</span>
-  <span><strong>Status:</strong> ${p().status}</span>
- </div>`;
+
+return `
+<div class="context">
+
+<span><strong>Program:</strong> ${escapeHTML(p().name)}</span>
+
+<span><strong>Campus:</strong> ${escapeHTML(p().campus)}</span>
+
+<span><strong>Next meeting:</strong> ${escapeHTML(p().nextMeeting)}</span>
+
+<span><strong>Status:</strong> ${escapeHTML(p().status)}</span>
+
+</div>
+`;
+
 }
 
 function recommendationsTable(){
- return `
- <div class="table-wrap">
- <table>
-  <thead>
-   <tr>
-    <th>Recommendation</th>
-    <th>Meeting</th>
-    <th>Owner</th>
-    <th>Due</th>
-    <th>Status</th>
-    <th>Evidence</th>
-   </tr>
-  </thead>
-  <tbody>
-  ${p().recommendations.map(r=>`
-   <tr>
-    <td>
-     <button class="rec-link" onclick="showRecommendation('${r.id}')">
-      ${r.text}
-     </button>
-     <br><small>${r.id}</small>
-    </td>
-    <td>${r.date}</td>
-    <td>${r.owner}</td>
-    <td>${r.due}</td>
-    <td>
-     <span class="status ${statusClass(r.status)}">${r.status}</span>
-    </td>
-    <td>${r.evidence}</td>
-   </tr>
-  `).join("")}
-  </tbody>
- </table>
- </div>`;
+
+return `
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Recommendation</th>
+<th>Meeting</th>
+<th>Owner</th>
+<th>Due</th>
+<th>Status</th>
+<th>Evidence</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+${p().recommendations.map(r=>`
+
+<tr>
+
+<td>
+
+<button class="rec-link" data-rec="${escapeHTML(r.id)}">
+${escapeHTML(r.text)}
+</button>
+
+<br>
+<small>${escapeHTML(r.id)}</small>
+
+</td>
+
+<td>${escapeHTML(r.date)}</td>
+
+<td>${escapeHTML(r.owner)}</td>
+
+<td>${escapeHTML(r.due)}</td>
+
+<td>
+<span class="status ${statusClass(r.status)}">
+${escapeHTML(r.status)}
+</span>
+</td>
+
+<td>${escapeHTML(r.evidence)}</td>
+
+</tr>
+
+`).join("")}
+
+</tbody>
+
+</table>
+
+</div>
+`;
+
 }
 
-/* ------------------------------------------------
+
+/* ==========================================
    OVERVIEW
------------------------------------------------- */
+========================================== */
 
 function overview(){
 
- const open=p().recommendations.filter(r=>r.status!=="Completed").length;
- const awaiting=p().recommendations.filter(r=>r.status==="Awaiting decision").length;
+const open=p().recommendations.filter(
+r=>r.status!=="Completed"
+).length;
 
- return `
- ${pageHeader(
-  p().name+" Advisory Board Overview",
-  "Program-level view of board activity, recommendations, review status, and evidence."
- )}
+const awaiting=p().recommendations.filter(
+r=>r.status==="Awaiting decision"
+).length;
 
- ${context()}
+return `
 
- <div class="grid kpis">
+${pageHeader(
+p().name+" Advisory Board Overview",
+"Program-level view of board activity, recommendations, review status, and evidence."
+)}
 
-  <div class="card kpi">
-   <small>Board members</small>
-   <strong>${p().members.length}</strong>
-   <p>Illustrative active members</p>
-  </div>
+${context()}
 
-  <div class="card kpi">
-   <small>Recommendations</small>
-   <strong>${p().recommendations.length}</strong>
-   <p>Current illustrative items</p>
-  </div>
+<div class="grid kpis">
 
-  <div class="card kpi">
-   <small>Awaiting action</small>
-   <strong>${open}</strong>
-   <p>Open or planned actions</p>
-  </div>
+<div class="card kpi">
+<small>Board Members</small>
+<strong>${p().members.length}</strong>
+<p>Illustrative active members</p>
+</div>
 
-  <div class="card kpi">
-   <small>Awaiting decision</small>
-   <strong>${awaiting}</strong>
-   <p>Needs institutional response</p>
-  </div>
+<div class="card kpi">
+<small>Recommendations</small>
+<strong>${p().recommendations.length}</strong>
+<p>Current illustrative items</p>
+</div>
 
- </div>
+<div class="card kpi">
+<small>Awaiting Action</small>
+<strong>${open}</strong>
+<p>Open or planned actions</p>
+</div>
 
- <div class="dashboard">
+<div class="card kpi">
+<small>Awaiting Decision</small>
+<strong>${awaiting}</strong>
+<p>Needs institutional response</p>
+</div>
 
-  <div class="card">
-   <h3>Recommendations & Actions</h3>
-   <div class="card-sub">
-    Employer feedback → AAHI decision → assigned action → evidence of completion
-   </div>
+</div>
 
-   ${recommendationsTable()}
-  </div>
+<div class="dashboard">
 
-  <div class="card">
+<div class="card">
 
-   <div class="side-block">
-    <small>NEXT MEETING</small>
-    <strong>${p().nextMeeting}</strong>
-    <span>${p().campus}</span>
-   </div>
+<h3>Recommendations & Actions</h3>
 
-   <div class="side-block">
-    <small>REVIEW STATUS</small>
-    <strong>${p().status}</strong>
-   </div>
+<div class="card-sub">
+Employer feedback → AAHI decision → assigned action → evidence of completion
+</div>
 
-   <div class="side-block">
-    <small>MISSING / PENDING EVIDENCE</small>
-    <div class="missing">
-     • Signed attendance<br>
-     • Final minutes<br>
-     • Advisor survey summary<br>
-     • Evidence for open recommendations
-    </div>
-   </div>
+${recommendationsTable()}
 
-   <div class="side-block">
-    <small>REVIEW FOCUS</small>
-    <strong>${p().review[0][0]}</strong>
-    <span>${p().review[0][1]}</span>
-   </div>
+</div>
 
-  </div>
+<div class="card">
 
- </div>
+<div class="side-block">
+<small>NEXT MEETING</small>
+<strong>${escapeHTML(p().nextMeeting)}</strong>
+<span>${escapeHTML(p().campus)}</span>
+</div>
 
- <div class="card tableau-card">
-  <h3>AAHI Program Dashboard</h3>
-  <div class="card-sub">
-   Embedded Tableau dashboard for additional program and cohort context.
-  </div>
+<div class="side-block">
+<small>REVIEW STATUS</small>
+<strong>${escapeHTML(p().status)}</strong>
+</div>
 
-  <div class="tableau-frame">
+<div class="side-block">
 
-   <div class='tableauPlaceholder'
-        id='viz1790340895703'
-        style='position: relative'>
+<small>MISSING / PENDING EVIDENCE</small>
 
-    <noscript>
-     <a href='#'>
-      <img
-       alt='AAHI Dashboard'
-       src='https://public.tableau.com/static/images/AA/AAHIDashboard/CohortEnrollmentProgramMix/1_rss.png'
-       style='border:none;width:100%;'
-      />
-     </a>
-    </noscript>
+<div class="missing">
 
-    <object class='tableauViz' style='display:none;'>
+• Signed attendance<br>
+• Final minutes<br>
+• Advisor survey summary<br>
+• Evidence for open recommendations
 
-     <param name='host_url'
-      value='https%3A%2F%2Fpublic.tableau.com%2F' />
+</div>
 
-     <param name='embed_code_version' value='3' />
-     <param name='site_root' value='' />
+</div>
 
-     <param name='name'
-      value='AAHIDashboard/CohortEnrollmentProgramMix' />
+<div class="side-block">
 
-     <param name='tabs' value='yes' />
-     <param name='toolbar' value='yes' />
+<small>REVIEW FOCUS</small>
 
-     <param name='static_image'
-      value='https://public.tableau.com/static/images/AA/AAHIDashboard/CohortEnrollmentProgramMix/1.png' />
+<strong>${escapeHTML(p().review[0][0])}</strong>
 
-     <param name='animate_transition' value='yes' />
-     <param name='display_static_image' value='yes' />
-     <param name='display_spinner' value='yes' />
-     <param name='display_overlay' value='yes' />
-     <param name='display_count' value='yes' />
-     <param name='language' value='en-US' />
+<span>${escapeHTML(p().review[0][1])}</span>
 
-    </object>
-   </div>
+</div>
 
-  </div>
+</div>
 
- </div>
- `;
+</div>
+
+`;
+
 }
 
-/* ------------------------------------------------
-   MEMBERSHIP
------------------------------------------------- */
+
+/* ==========================================
+   BOARD MEMBERSHIP
+========================================== */
 
 function membership(){
 
- return `
- ${pageHeader(
-  p().name+" Board Membership",
-  "Illustrative membership roster. Contact details should be restricted to authorized staff in a production system."
- )}
+return `
 
- ${context()}
+${pageHeader(
+p().name+" Board Membership",
+"Illustrative membership roster. Real contact details should be restricted to authorized staff."
+)}
 
- <div class="grid two-col">
+${context()}
 
- ${p().members.map(m=>`
-  <div class="card member">
-   <div class="avatar">${m[0].split(" ").map(x=>x[0]).join("")}</div>
-   <div>
-    <strong>${m[0]}</strong>
-    <p>${m[2]}</p>
-    <small>${m[1]}</small><br>
-    <small>Term: ${m[3]}</small><br>
-    <small>Contact: staff-only in production</small>
-   </div>
-  </div>
- `).join("")}
+<div class="grid two-col">
 
- </div>
- `;
+${p().members.map(m=>`
+
+<div class="card member">
+
+<div class="avatar">
+${escapeHTML(m[0].split(" ").map(x=>x[0]).join(""))}
+</div>
+
+<div>
+
+<strong>${escapeHTML(m[0])}</strong>
+
+<p>${escapeHTML(m[2])}</p>
+
+<small>${escapeHTML(m[1])}</small><br>
+
+<small>Term: ${escapeHTML(m[3])}</small><br>
+
+<small>Contact: Staff-only in production</small>
+
+</div>
+
+</div>
+
+`).join("")}
+
+</div>
+
+`;
+
 }
 
-/* ------------------------------------------------
+
+/* ==========================================
    MEETING WORKSPACE
------------------------------------------------- */
+========================================== */
 
 function meeting(){
 
- return `
- ${pageHeader(
-  p().name+" Meeting Workspace",
-  "Agenda, attendance, materials, minutes, and prior recommendations."
- )}
+return `
 
- ${context()}
+${pageHeader(
+p().name+" Meeting Workspace",
+"Agenda, materials, attendance, minutes, and prior recommendations."
+)}
 
- <div class="grid two-col">
+${context()}
 
-  <div class="card">
-   <h3>Illustrative Meeting Agenda</h3>
+<div class="grid two-col">
 
-   ${p().agenda.map((a,i)=>`
-    <div class="list-row">
-     <strong>${i+1}. ${a}</strong>
-    </div>
-   `).join("")}
+<div class="card">
 
-  </div>
+<h3>Illustrative Meeting Agenda</h3>
 
-  <div class="card">
+${p().agenda.map((a,i)=>`
 
-   <h3>Meeting Record</h3>
+<div class="list-row">
 
-   <div class="list-row">
-    <strong>Agenda</strong>
-    <small>Illustrative agenda prepared</small>
-   </div>
+<strong>${i+1}. ${escapeHTML(a)}</strong>
 
-   <div class="list-row">
-    <strong>Materials</strong>
-    <small>Curriculum, skills checklist, outcomes, and prior recommendations</small>
-   </div>
+</div>
 
-   <div class="list-row">
-    <strong>Attendance</strong>
-    <small>Signed attendance should be uploaded after the meeting</small>
-   </div>
+`).join("")}
 
-   <div class="list-row">
-    <strong>Minutes</strong>
-    <small>Final approved minutes should document committee discussion and recommendations</small>
-   </div>
+</div>
 
-   <div class="list-row">
-    <strong>Prior Recommendations</strong>
-    <small>${p().recommendations.length} sample recommendation records available</small>
-   </div>
+<div class="card">
 
-  </div>
+<h3>Meeting Record</h3>
 
- </div>
- `;
+<div class="list-row">
+<strong>Agenda</strong>
+<small>Illustrative agenda prepared</small>
+</div>
+
+<div class="list-row">
+<strong>Materials</strong>
+<small>Curriculum, skills checklist, outcomes, and prior recommendations</small>
+</div>
+
+<div class="list-row">
+<strong>Attendance</strong>
+<small>Signed attendance should be uploaded after the meeting</small>
+</div>
+
+<div class="list-row">
+<strong>Minutes</strong>
+<small>Final approved minutes should document committee discussion and recommendations</small>
+</div>
+
+<div class="list-row">
+<strong>Prior Recommendations</strong>
+<small>${p().recommendations.length} sample recommendation records available</small>
+</div>
+
+</div>
+
+</div>
+
+`;
+
 }
 
-/* ------------------------------------------------
+
+/* ==========================================
    PROGRAM REVIEW
------------------------------------------------- */
+========================================== */
 
 function review(){
 
- return `
- ${pageHeader(
-  p().name+" Program Review",
-  "Review curriculum, skills, experiences, equipment, certification preparation, and proposed changes."
- )}
+return `
 
- ${context()}
+${pageHeader(
+p().name+" Program Review",
+"Review curriculum, skills, experiences, equipment, certification preparation, and proposed changes."
+)}
 
- <div class="grid two-col">
+${context()}
 
- ${p().review.map((r,i)=>`
-  <div class="card">
-   <small style="color:var(--orange-dark);font-weight:bold;">
-    REVIEW AREA ${i+1}
-   </small>
+<div class="grid two-col">
 
-   <h3 style="margin-top:8px">${r[0]}</h3>
-   <p style="font-size:12px;color:var(--muted);line-height:1.5;">
-    ${r[1]}
-   </p>
+${p().review.map((r,i)=>`
 
-   <div style="margin-top:12px">
-    <span class="status planned">Review during meeting</span>
-   </div>
-  </div>
- `).join("")}
+<div class="card">
 
- </div>
- `;
+<small style="color:#99511d;font-weight:bold;">
+REVIEW AREA ${i+1}
+</small>
+
+<h3 style="margin-top:8px">
+${escapeHTML(r[0])}
+</h3>
+
+<p style="font-size:12px;color:var(--muted);line-height:1.5;">
+${escapeHTML(r[1])}
+</p>
+
+<div style="margin-top:12px">
+
+<span class="status planned">
+Review during meeting
+</span>
+
+</div>
+
+</div>
+
+`).join("")}
+
+</div>
+
+<div class="card" style="margin-top:18px;">
+
+<h3>Curriculum Review Guidance</h3>
+
+<p style="font-size:12px;color:var(--muted);line-height:1.7;">
+
+For each review area, advisory members should consider occupational relevance,
+entry-level competencies, sequence and practice, safety and professional
+practice, equipment and resources, and credential and employment readiness.
+
+</p>
+
+<p style="font-size:12px;color:var(--muted);line-height:1.7;">
+
+Recommended responses: Meets Need, Revise, or Unable to Assess.
+Document proposed changes and the rationale for each recommendation.
+
+</p>
+
+</div>
+
+`;
+
 }
 
-/* ------------------------------------------------
+
+/* ==========================================
    OUTCOMES
------------------------------------------------- */
+========================================== */
 
 function outcomes(){
 
- const labels=[
-  "Completion",
-  "Certification / Credential",
-  "Placement",
-  "Employer Feedback"
- ];
+const labels=[
+"Completion",
+"Certification / Credential",
+"Placement",
+"Employer Feedback"
+];
 
- return `
- ${pageHeader(
-  p().name+" Outcomes",
-  "Illustrative outcome display. Reporting periods and official values must be verified before institutional use."
- )}
+return `
 
- ${context()}
+${pageHeader(
+p().name+" Outcomes",
+"Illustrative outcome display. Reporting periods and official values must be verified before institutional use."
+)}
 
- <div class="grid kpis">
+${context()}
 
- ${labels.map((l,i)=>`
-  <div class="card">
-   <small>${l}</small>
-   <div class="metric">${p().outcomes[i]}%</div>
+<div class="grid kpis">
 
-   <div class="bar">
-    <span style="width:${p().outcomes[i]}%"></span>
-   </div>
+${labels.map((l,i)=>`
 
-   <p style="font-size:10px;color:var(--muted);">
-    Illustrative · Sample reporting period 2025–26
-   </p>
-  </div>
- `).join("")}
+<div class="card">
 
- </div>
+<small>${escapeHTML(l)}</small>
 
- <div class="card tableau-card">
-  <h3>AAHI Tableau Dashboard</h3>
-  <p style="font-size:12px;color:var(--muted);">
-   The live Tableau dashboard is also available on the Overview page.
-  </p>
+<div class="metric">
+${p().outcomes[i]}%
+</div>
 
-  <a
-   href="https://public.tableau.com/views/AAHIDashboard/CohortEnrollmentProgramMix"
-   target="_blank"
-   style="color:var(--teal);font-weight:bold;"
-  >
-   Open dashboard in Tableau ↗
-  </a>
- </div>
- `;
+<div class="bar">
+
+<span style="width:${p().outcomes[i]}%"></span>
+
+</div>
+
+<p style="font-size:10px;color:var(--muted);margin-top:10px;">
+Illustrative · Sample reporting period 2025–26
+</p>
+
+</div>
+
+`).join("")}
+
+</div>
+
+<div class="card" style="margin-top:18px;">
+
+<h3>Additional Institutional Analytics</h3>
+
+<p style="font-size:12px;color:var(--muted);line-height:1.6;">
+
+The AAHI Tableau dashboard is available in its own dedicated tab.
+
+</p>
+
+<button class="btn" data-go="dashboard" style="margin-top:12px;">
+
+Open AAHI Dashboard →
+
+</button>
+
+</div>
+
+`;
+
 }
 
-/* ------------------------------------------------
+
+/* ==========================================
+   NEW DEDICATED TABLEAU DASHBOARD TAB
+========================================== */
+
+function dashboard(){
+
+return `
+
+<div class="tableau-page">
+
+<div class="tableau-header">
+
+<div class="overline" style="color:#d5e7f5;">
+AAHI INSTITUTIONAL ANALYTICS
+</div>
+
+<h2>AAHI Dashboard</h2>
+
+<p>
+
+Cohort enrollment and program mix data presented through the
+AAHI Tableau dashboard. Use Tableau's tabs and filters to
+explore the available information.
+
+</p>
+
+</div>
+
+<div class="tableau-container">
+
+<div class="page-head">
+
+<div>
+
+<h2>Cohort Enrollment & Program Mix</h2>
+
+<p>
+Interactive Tableau dashboard
+</p>
+
+</div>
+
+<a
+class="btn"
+href="${tableauOpen}"
+target="_blank"
+rel="noopener noreferrer">
+
+Open in Tableau ↗
+
+</a>
+
+</div>
+
+<iframe
+class="tableau-frame"
+title="AAHI Cohort Enrollment and Program Mix Dashboard"
+src="${tableauURL}"
+loading="eager"
+allowfullscreen>
+</iframe>
+
+<div class="tableau-note">
+
+<strong>Dashboard note:</strong>
+
+This Tableau visualization is hosted on Tableau Public.
+The AAHI program selector does not automatically filter the Tableau view.
+Use the filters within Tableau to select the appropriate program.
+
+If the embedded dashboard does not load, use the
+<strong>Open in Tableau</strong> button above.
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+/* ==========================================
    RECOMMENDATION TRACKER
------------------------------------------------- */
+========================================== */
 
 function recommendations(){
 
- return `
- ${pageHeader(
-  p().name+" Recommendation Tracker",
-  "Follow each item from employer feedback to AAHI's decision and resulting change."
- )}
+return `
 
- ${context()}
+${pageHeader(
+p().name+" Recommendation Tracker",
+"Follow each item from employer feedback to AAHI's decision and resulting change."
+)}
 
- <div class="card">
+${context()}
 
-  <h3>Recommendations & Actions</h3>
+<div class="card">
 
-  <div class="card-sub">
-   Select a recommendation to view the full decision trail.
-  </div>
+<h3>Recommendations & Actions</h3>
 
-  ${recommendationsTable()}
+<div class="card-sub">
 
- </div>
- `;
+Select a recommendation to view the full decision trail.
+
+</div>
+
+${recommendationsTable()}
+
+</div>
+
+`;
+
 }
 
-/* ------------------------------------------------
-   EVIDENCE
------------------------------------------------- */
+
+/* ==========================================
+   EVIDENCE LIBRARY
+========================================== */
 
 function evidence(){
 
- return `
- ${pageHeader(
-  p().name+" Evidence Library",
-  "Illustrative evidence register for meeting and action documentation."
- )}
+return `
 
- ${context()}
+${pageHeader(
+p().name+" Evidence Library",
+"Illustrative evidence register for meeting and action documentation."
+)}
 
- <div class="grid two-col">
+${context()}
 
-  <div class="card">
+<div class="grid two-col">
 
-   <h3>Meeting Evidence</h3>
+<div class="card">
 
-   ${[
-    ["Meeting agenda","Prepared"],
-    ["Signed attendance","Pending"],
-    ["Approved minutes","Pending"],
-    ["Advisor surveys","Pending"],
-    ["Program materials reviewed","Prepared"]
-   ].map(x=>`
-    <div class="list-row">
-     <strong>${x[0]}</strong>
-     <small>${x[1]}</small>
-    </div>
-   `).join("")}
+<h3>Meeting Evidence</h3>
 
-  </div>
+${[
+["Meeting Agenda","Prepared"],
+["Signed Attendance","Pending"],
+["Approved Minutes","Pending"],
+["Advisor Surveys","Pending"],
+["Program Materials Reviewed","Prepared"]
+].map(x=>`
 
-  <div class="card">
+<div class="list-row">
 
-   <h3>Recommendation Evidence</h3>
+<strong>${escapeHTML(x[0])}</strong>
 
-   ${p().recommendations.map(r=>`
-    <div class="list-row">
-     <strong>${r.id}</strong>
-     <small>${r.evidence}</small>
-    </div>
-   `).join("")}
+<small>${escapeHTML(x[1])}</small>
 
-  </div>
+</div>
 
- </div>
- `;
+`).join("")}
+
+</div>
+
+<div class="card">
+
+<h3>Recommendation Evidence</h3>
+
+${p().recommendations.map(r=>`
+
+<div class="list-row">
+
+<strong>${escapeHTML(r.id)}</strong>
+
+<small>${escapeHTML(r.evidence)}</small>
+
+</div>
+
+`).join("")}
+
+</div>
+
+</div>
+
+`;
+
 }
 
-/* ------------------------------------------------
-   DETAIL MODAL
------------------------------------------------- */
+
+/* ==========================================
+   RECOMMENDATION DETAIL MODAL
+========================================== */
 
 function showRecommendation(id){
 
- const r=p().recommendations.find(x=>x.id===id);
+const r=p().recommendations.find(x=>x.id===id);
 
- if(!r) return;
+if(!r)return;
 
- document.getElementById("modalMount").innerHTML=`
+document.getElementById("modalMount").innerHTML=`
 
- <div class="modal-bg" onclick="if(event.target===this)closeModal()">
+<div class="modal-bg" id="modalBackground">
 
-  <div class="modal">
+<div class="modal">
 
-   <button class="close" onclick="closeModal()">×</button>
+<button class="close" id="closeModal">×</button>
 
-   <div class="overline">ILLUSTRATIVE RECOMMENDATION · ${r.id}</div>
+<div class="overline">
+ILLUSTRATIVE RECOMMENDATION · ${escapeHTML(r.id)}
+</div>
 
-   <h2>${r.text}</h2>
+<h2>${escapeHTML(r.text)}</h2>
 
-   <span class="status ${statusClass(r.status)}">${r.status}</span>
+<span class="status ${statusClass(r.status)}">
 
-   <div class="trail">
+${escapeHTML(r.status)}
 
-    <div class="trail-item">
-     <strong>1. Employer feedback</strong>
-     <p>${r.text}</p>
-    </div>
+</span>
 
-    <div class="trail-item">
-     <strong>2. AAHI decision and rationale</strong>
-     <p>${r.decision}</p>
-    </div>
+<div class="trail">
 
-    <div class="trail-item">
-     <strong>3. Assigned action</strong>
-     <p>${r.action}</p>
-    </div>
+<div class="trail-item">
 
-    <div class="trail-item">
-     <strong>4. Evidence of completion</strong>
-     <p>${r.evidence}</p>
-    </div>
+<strong>1. Employer Feedback</strong>
 
-   </div>
+<p>${escapeHTML(r.text)}</p>
 
-   <p style="font-size:11px;color:var(--muted)">
-    Owner: ${r.owner}<br>
-    Meeting: ${r.date}<br>
-    Due: ${r.due}
-   </p>
+</div>
 
-  </div>
+<div class="trail-item">
 
- </div>
- `;
+<strong>2. AAHI Decision and Rationale</strong>
+
+<p>${escapeHTML(r.decision)}</p>
+
+</div>
+
+<div class="trail-item">
+
+<strong>3. Assigned Action</strong>
+
+<p>${escapeHTML(r.action)}</p>
+
+</div>
+
+<div class="trail-item">
+
+<strong>4. Evidence of Completion</strong>
+
+<p>${escapeHTML(r.evidence)}</p>
+
+</div>
+
+</div>
+
+<p style="font-size:11px;color:var(--muted);">
+
+Owner: ${escapeHTML(r.owner)}<br>
+
+Meeting: ${escapeHTML(r.date)}<br>
+
+Due: ${escapeHTML(r.due)}
+
+</p>
+
+<button class="btn" id="closeModalBottom">
+Close
+</button>
+
+</div>
+
+</div>
+
+`;
+
+document.getElementById("closeModal").onclick=closeModal;
+
+document.getElementById("closeModalBottom").onclick=closeModal;
+
+document.getElementById("modalBackground").onclick=e=>{
+if(e.target.id==="modalBackground")closeModal();
+};
+
 }
 
 function closeModal(){
- document.getElementById("modalMount").innerHTML="";
+
+document.getElementById("modalMount").innerHTML="";
+
 }
 
-/* ------------------------------------------------
-   RENDER
------------------------------------------------- */
+
+/* ==========================================
+   RENDER APPLICATION
+========================================== */
 
 function render(){
 
- const content=document.getElementById("content");
+const content=document.getElementById("content");
 
- if(currentPage==="overview") content.innerHTML=overview();
- if(currentPage==="membership") content.innerHTML=membership();
- if(currentPage==="meeting") content.innerHTML=meeting();
- if(currentPage==="review") content.innerHTML=review();
- if(currentPage==="outcomes") content.innerHTML=outcomes();
- if(currentPage==="recommendations") content.innerHTML=recommendations();
- if(currentPage==="evidence") content.innerHTML=evidence();
+const pages={
+overview,
+membership,
+meeting,
+review,
+outcomes,
+dashboard,
+recommendations,
+evidence
+};
 
- document.querySelectorAll(".nav button").forEach(btn=>{
-  btn.classList.toggle("active",btn.dataset.page===currentPage);
- });
-
- if(currentPage==="overview"){
-  loadTableau();
- }
-}
-
-function loadTableau(){
-
- const divElement=document.getElementById("viz1790340895703");
-
- if(!divElement) return;
-
- const vizElement=divElement.getElementsByTagName("object")[0];
-
- if(!vizElement) return;
-
- if(divElement.offsetWidth>800){
-  vizElement.style.minWidth="1000px";
-  vizElement.style.maxWidth="100%";
-  vizElement.style.minHeight="850px";
- }
- else if(divElement.offsetWidth>500){
-  vizElement.style.minWidth="1000px";
-  vizElement.style.maxWidth="100%";
-  vizElement.style.minHeight="850px";
- }
- else{
-  vizElement.style.width="100%";
-  vizElement.style.minHeight="2100px";
- }
-
- const scriptElement=document.createElement("script");
- scriptElement.src="https://public.tableau.com/javascripts/api/viz_v1.js";
-
- vizElement.parentNode.insertBefore(scriptElement,vizElement);
-}
-
-/* NAV */
+content.innerHTML=(pages[currentPage]||overview)();
 
 document.querySelectorAll(".nav button").forEach(btn=>{
 
- btn.addEventListener("click",()=>{
-
-  currentPage=btn.dataset.page;
-
-  render();
-
-  window.scrollTo({
-   top:0,
-   behavior:"smooth"
-  });
-
- });
+btn.classList.toggle(
+"active",
+btn.dataset.page===currentPage
+);
 
 });
+
+document.querySelectorAll("[data-rec]").forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+showRecommendation(btn.dataset.rec);
+
+});
+
+});
+
+document.querySelectorAll("[data-go]").forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+currentPage=btn.dataset.go;
+
+render();
+
+window.scrollTo(0,0);
+
+});
+
+});
+
+}
+
+
+/* ==========================================
+   NAVIGATION EVENTS
+========================================== */
+
+document.querySelectorAll(".nav button").forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+currentPage=btn.dataset.page;
+
+render();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+});
+
+});
+
 
 document.getElementById("programSelect").addEventListener("change",e=>{
 
- currentProgram=e.target.value;
+currentProgram=e.target.value;
 
- render();
+render();
 
 });
+
+
+/* INITIAL LOAD */
 
 render();
 
