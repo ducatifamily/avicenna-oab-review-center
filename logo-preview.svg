@@ -1,11 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 66" role="img" aria-labelledby="t d">
-<title id="t">Avicenna branded preview mark</title><desc id="d">Stylized preview mark; replace with official Avicenna logo file.</desc>
-<g transform="translate(5 8)" fill="none" stroke-linecap="round" stroke-width="7">
-<path stroke="#d75b48" d="M9 23 C11 3 32 3 34 23 S55 43 57 23"/>
-<path stroke="#1f91a7" d="M8 25 C10 45 31 45 33 25 S54 5 56 25"/>
-<path stroke="#283e70" d="M20 8 C39 9 40 39 24 42"/>
-<path stroke="#d6a04b" d="M42 8 C23 9 22 39 38 42"/>
-</g>
-<text x="76" y="31" font-size="21" font-family="Arial, sans-serif" letter-spacing="2" font-weight="700" fill="#ba5c3e">AVICENNA</text>
-<text x="77" y="47" font-size="9.4" font-family="Arial, sans-serif" letter-spacing="1.25" font-weight="700" fill="#25476b">ALLIED HEALTH INSTITUTE</text>
-</svg>
+assets/avicenna-logo.png
